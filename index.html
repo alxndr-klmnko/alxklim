@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Александр Клименко</title>
+    <title data-ru="Александр Клименко" data-en="Alexander Klimenko">Александр Клименко</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -32,6 +32,22 @@
                 --card-border: rgba(255, 255, 255, 0.1);
             }
         }
+        html.dark {
+            --bg-color: #0f0f0f !important;
+            --text-color: #eee !important;
+            --text-secondary: #999 !important;
+            --accent-color: #007aff !important;
+            --card-bg: rgba(255, 255, 255, 0.05) !important;
+            --card-border: rgba(255, 255, 255, 0.1) !important;
+        }
+        body.dark {
+            --bg-color: #0f0f0f !important;
+            --text-color: #eee !important;
+            --text-secondary: #999 !important;
+            --accent-color: #007aff !important;
+            --card-bg: rgba(255, 255, 255, 0.05) !important;
+            --card-border: rgba(255, 255, 255, 0.1) !important;
+        }
         body {
             font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg-color);
@@ -42,7 +58,10 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         .container {
             max-width: 600px;
@@ -118,6 +137,61 @@
             transition: all 0.2s ease;
             backdrop-filter: blur(10px);
         }
+        .app-logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            border-radius: 12px;
+            background: rgba(0, 122, 255, 0.1);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-card.development {
+            opacity: 0.7;
+            position: relative;
+        }
+        .app-card.development::after {
+            content: "В разработке";
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 193, 7, 0.9);
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .gear-rotate {
+            animation: rotate 3s linear infinite;
+        }
+        /* Light mode - используем цвета из темной темы */
+        .app-logo svg path[fill="#007AFF"] {
+            fill: #3B82F6 !important; /* Ярко-синий для папки (из темной темы) */
+        }
+        .app-logo svg path[fill="#FFFFFF"] {
+            fill: #1F2937 !important; /* Темно-серый документ (из темной темы) */
+        }
+        .app-logo svg path[stroke="#007AFF"] {
+            stroke: #3B82F6 !important; /* Ярко-синий крест (из темной темы) */
+        }
+        
+        /* Dark mode - используем цвета из светлой темы */
+        .dark .app-logo svg path[fill="#007AFF"] {
+            fill: #007AFF !important; /* Синий для папки (из светлой темы) */
+        }
+        .dark .app-logo svg path[fill="#FFFFFF"] {
+            fill: #FFFFFF !important; /* Белый документ (из светлой темы) */
+        }
+        .dark .app-logo svg path[stroke="#007AFF"] {
+            stroke: #007AFF !important; /* Синий крест (из светлой темы) */
+        }
         .app-card:hover {
             transform: translateY(-2px);
             border-color: var(--accent-color);
@@ -177,41 +251,150 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="header">
             <img src="avatar.jpg" alt="Александр Клименко" class="avatar">
-            <h1 class="name">Александр Клименко</h1>
-            <p class="quote" id="quote">Сделал приложение для себя. Потом подумал — а вдруг на этом удастся еще и заработать?</p>
+            <h1 class="name" data-ru="Александр Клименко" data-en="Alexander Klimenko">Александр Клименко</h1>
+            <p class="quote" id="quote" data-ru="Сделал приложение для себя. Потом подумал — а вдруг на этом удастся еще и заработать?" data-en="Made an app for myself. Then I thought — what if I could also earn money from it?">Сделал приложение для себя. Потом подумал — а вдруг на этом удастся еще и заработать?</p>
         </header>
 
         <section class="apps-section">
-            <h2 class="apps-title" id="apps-title">Приложения</h2>
+            <h2 class="apps-title" id="apps-title" data-ru="Приложения" data-en="Applications">Приложения</h2>
             <div class="apps-grid" id="apps-grid">
                 <a href="https://medcard.alxklim.com" class="app-card" target="_blank" rel="noopener noreferrer">
-                    <div class="app-name">МедКарта</div>
-                    <div class="app-description">Структурирует медицинские документы. Сканируй, сохраняй, переводи на английский. Всегда под рукой в путешествиях. Не выглядишь идиотом перед доктором. Без корпоративной слежки.</div>
+                    <div class="app-logo">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 48px; height: 48px;">
+                            <!-- Папка -->
+                            <path d="M8 12C8 9.79086 9.79086 8 12 8H20L24 12H36C38.2091 12 40 13.7909 40 16V36C40 38.2091 38.2091 40 36 40H12C9.79086 40 8 38.2091 8 36V12Z" fill="#007AFF"/>
+                            <!-- Документ -->
+                            <path d="M32 16H24L20 12H12C9.79086 12 8 13.7909 8 16V36C8 38.2091 9.79086 40 12 40H36C38.2091 40 40 38.2091 40 36V20C40 17.7909 38.2091 16 36 16H32Z" fill="#FFFFFF"/>
+                            <!-- Медицинский крест -->
+                            <path d="M24 20V28M20 24H28" stroke="#007AFF" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="app-name" data-ru="МедКарта" data-en="MedCard">МедКарта</div>
+                    <div class="app-description" data-ru="Хранит все твои медицинские документы в одном месте. Сканируй, сохраняй, переводи. Всегда под рукой, когда нужно предъявить врачу или вспомнить название медикаментов." data-en="Stores all your medical documents in one place. Scan, save, translate. Always at hand when you need to show to a doctor or remember medication names.">Хранит все твои медицинские документы в одном месте. Сканируй, сохраняй, переводи. Всегда под рукой, когда нужно предъявить врачу или вспомнить название медикаментов.</div>
                     <div class="app-url">medcard.alxklim.com</div>
                 </a>
-                <a href="https://trainer.alxklim.com" class="app-card" target="_blank" rel="noopener noreferrer">
-                    <div class="app-name">Тренер</div>
-                    <div class="app-description">Тренировки с собственным весом. Гармоничное развитие тела. Без перекачивания и маркетинговой хуйни.</div>
+                <a href="https://trainer.alxklim.com" class="app-card development" target="_blank" rel="noopener noreferrer">
+                    <div class="app-logo">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 48px; height: 48px;">
+                            <!-- Большая шестеренка -->
+                            <g class="gear-rotate">
+                                <circle cx="24" cy="24" r="18" fill="none" stroke="#007AFF" stroke-width="2"/>
+                                <circle cx="24" cy="24" r="6" fill="#007AFF"/>
+                                <rect x="22" y="6" width="4" height="8" fill="#007AFF"/>
+                                <rect x="22" y="34" width="4" height="8" fill="#007AFF"/>
+                                <rect x="6" y="22" width="8" height="4" fill="#007AFF"/>
+                                <rect x="34" y="22" width="8" height="4" fill="#007AFF"/>
+                                <rect x="8.5" y="8.5" width="4" height="4" fill="#007AFF" transform="rotate(45 10.5 10.5)"/>
+                                <rect x="35.5" y="8.5" width="4" height="4" fill="#007AFF" transform="rotate(45 37.5 10.5)"/>
+                                <rect x="8.5" y="35.5" width="4" height="4" fill="#007AFF" transform="rotate(45 10.5 37.5)"/>
+                                <rect x="35.5" y="35.5" width="4" height="4" fill="#007AFF" transform="rotate(45 37.5 37.5)"/>
+                            </g>
+                            <!-- Малая шестеренка (вращается в другую сторону) -->
+                            <g style="animation: rotate 2s linear infinite reverse;">
+                                <circle cx="32" cy="16" r="8" fill="none" stroke="#007AFF" stroke-width="1.5"/>
+                                <circle cx="32" cy="16" r="3" fill="#007AFF"/>
+                                <rect x="31" y="8" width="2" height="4" fill="#007AFF"/>
+                                <rect x="31" y="20" width="2" height="4" fill="#007AFF"/>
+                                <rect x="24" y="15" width="4" height="2" fill="#007AFF"/>
+                                <rect x="36" y="15" width="4" height="2" fill="#007AFF"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="app-name" data-ru="Тренер" data-en="Trainer">Тренер</div>
+                    <div class="app-description" data-ru="Тренировки с собственным весом. Гармоничное развитие тела. Без перекачивания и маркетинговой хуйни." data-en="Bodyweight workouts. Harmonious body development. Without over-pumping and marketing bullshit.">Тренировки с собственным весом. Гармоничное развитие тела. Без перекачивания и маркетинговой хуйни.</div>
                     <div class="app-url">trainer.alxklim.com</div>
                 </a>
             </div>
         </section>
 
         <section class="quote-section">
-            <p class="quote-text">Верю, что деньги — это побочный эффект от реализованных хороших идей.</p>
+            <p class="quote-text" data-ru=""Верю, что деньги — это побочный эффект от реализованных хороших идей."" data-en=""I believe that money is a side effect of good ideas implemented."">"Верю, что деньги — это побочный эффект от реализованных хороших идей."</p>
         </section>
 
         <footer class="footer">
-            © Александр Клименко — делаю что могу, как умею.
+            <span data-ru="© Александр Клименко — делаю что могу, как умею." data-en="© Alexander Klimenko — I do what I can, as I know how.">© Александр Клименко — делаю что могу, как умею.</span>
         </footer>
     </div>
 
     <script>
-        // Add staggered animation for app cards
+        // Language and theme management
+        let currentLanguage = 'ru';
+        let currentTheme = 'light';
+
+        // Auto-detect language from browser
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const savedLang = localStorage.getItem('portfolio-language');
+            
+            if (savedLang) {
+                return savedLang;
+            }
+            
+            if (browserLang.startsWith('en')) {
+                return 'en';
+            }
+            return 'ru';
+        }
+
+        // Auto-detect theme from system
+        function detectTheme() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            
+            // Автоматическое определение системной темы
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        }
+
+        // Update all text elements
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-ru][data-en]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLanguage;
+            
+            // Update page title
+            const title = document.querySelector('title');
+            if (title) {
+                title.textContent = title.getAttribute(`data-${currentLanguage}`);
+            }
+        }
+
+        // Update theme
+        function updateTheme() {
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark');
+                document.documentElement.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language and theme
+            currentLanguage = detectLanguage();
+            currentTheme = detectTheme();
+            
+            updateLanguage();
+            updateTheme();
+            
+            // Add staggered animation for app cards
             setTimeout(() => {
                 const cards = document.querySelectorAll('.app-card');
                 cards.forEach((card, index) => {
