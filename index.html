@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-ru="Александр Клименко" data-en="Alexander Klimenko">Александр Клименко</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -171,26 +172,26 @@
         .gear-rotate {
             animation: rotate 3s linear infinite;
         }
-        /* Light mode - используем цвета из темной темы */
+        /* Light mode - темный логотип */
         .app-logo svg path[fill="#007AFF"] {
-            fill: #3B82F6 !important; /* Ярко-синий для папки (из темной темы) */
+            fill: #007AFF !important; /* Синий для папки */
         }
         .app-logo svg path[fill="#FFFFFF"] {
-            fill: #1F2937 !important; /* Темно-серый документ (из темной темы) */
+            fill: #FFFFFF !important; /* Белый документ */
         }
         .app-logo svg path[stroke="#007AFF"] {
-            stroke: #3B82F6 !important; /* Ярко-синий крест (из темной темы) */
+            stroke: #007AFF !important; /* Синий крест */
         }
         
-        /* Dark mode - используем цвета из светлой темы */
+        /* Dark mode - светлый логотип */
         .dark .app-logo svg path[fill="#007AFF"] {
-            fill: #007AFF !important; /* Синий для папки (из светлой темы) */
+            fill: #FFFFFF !important; /* Белый для папки */
         }
         .dark .app-logo svg path[fill="#FFFFFF"] {
-            fill: #FFFFFF !important; /* Белый документ (из светлой темы) */
+            fill: #F3F4F6 !important; /* Светло-серый документ */
         }
         .dark .app-logo svg path[stroke="#007AFF"] {
-            stroke: #007AFF !important; /* Синий крест (из светлой темы) */
+            stroke: #FFFFFF !important; /* Белый крест */
         }
         .app-card:hover {
             transform: translateY(-2px);
