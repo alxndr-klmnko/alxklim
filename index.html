@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александр Клименко</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+        }
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #111;
+            --text-secondary: #666;
+            --accent-color: #007aff;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(0, 0, 0, 0.1);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f0f0f;
+                --text-color: #eee;
+                --text-secondary: #999;
+                --accent-color: #007aff;
+                --card-bg: rgba(255, 255, 255, 0.05);
+                --card-border: rgba(255, 255, 255, 0.1);
+            }
+        }
+        body {
+            font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .header {
+            margin-bottom: 2rem;
+        }
+        .avatar {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .name {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .quote {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .apps-section {
+            margin-bottom: 3rem;
+        }
+        .apps-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        .apps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 400px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+        .app-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.1);
+        }
+        .app-name {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+        .app-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .app-url {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+        .quote-section {
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .quote-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .footer {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+            margin-top: auto;
+        }
+        .loading {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .quote {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            .app-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="avatar.jpg" alt="Александр Клименко" class="avatar">
+            <h1 class="name">Александр Клименко</h1>
+            <p class="quote" id="quote">Сделал приложение для себя. Потом подумал — а вдруг на этом удастся еще и заработать?</p>
+        </header>
+
+        <section class="apps-section">
+            <h2 class="apps-title" id="apps-title">Приложения</h2>
+            <div class="apps-grid" id="apps-grid">
+                <a href="https://medcard.alxklim.com" class="app-card" target="_blank" rel="noopener noreferrer">
+                    <div class="app-name">МедКарта</div>
+                    <div class="app-description">Структурирует медицинские документы. Сканируй, сохраняй, переводи на английский. Всегда под рукой в путешествиях. Не выглядишь идиотом перед доктором. Без корпоративной слежки.</div>
+                    <div class="app-url">medcard.alxklim.com</div>
+                </a>
+                <a href="https://trainer.alxklim.com" class="app-card" target="_blank" rel="noopener noreferrer">
+                    <div class="app-name">Тренер</div>
+                    <div class="app-description">Тренировки с собственным весом. Гармоничное развитие тела. Без перекачивания и маркетинговой хуйни.</div>
+                    <div class="app-url">trainer.alxklim.com</div>
+                </a>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <p class="quote-text">Верю, что деньги — это побочный эффект от реализованных хороших идей.</p>
+        </section>
+
+        <footer class="footer">
+            © Александр Клименко — делаю что могу, как умею.
+        </footer>
+    </div>
+
+    <script>
+        // Add staggered animation for app cards
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.app-card');
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
